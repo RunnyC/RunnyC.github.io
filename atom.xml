@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>RunLove</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://runlove.ml/"/>
+  <updated>2017-08-31T15:14:59.919Z</updated>
+  <id>http://runlove.ml/</id>
+  
+  <author>
+    <name>Run Love</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决ubuntu使用的一个小问题</title>
+    <link href="http://runlove.ml/2017/08/31/Linux-0/"/>
+    <id>http://runlove.ml/2017/08/31/Linux-0/</id>
+    <published>2017-08-31T15:14:59.963Z</published>
+    <updated>2017-08-31T15:14:59.919Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用的是下基于Ubuntu的Linux Mint 18(Sarah)x64系统, 因为一开始的时候对于Linux的使用不大熟练, 安装完之后选择了中文语言, 也因为上手简单, 很多东西都是定制好的,<br>比如安装完成Home目录下就已经为你创建了包括<code>音乐</code>, <code>下载</code>, <code>模板</code>, <code>桌面</code>等空目录, 问题就在这里, 因为不喜欢中文文件名, 所以就手动把<code>桌面</code>这个文件名改成了英文<code>desktop</code>,<br>本来没什么事情的, 继续折腾东西, 等我下次重启之后, 发现桌面上多了很多东西(因为我是不喜欢放很多东西在桌面的, 这一点相信有很多人跟我一样, 简洁即美)，那么只放了一张图片在桌面上的我的系统桌面怎么突然多了那么多东西呢? 定睛一看, 原来都是我Home目录下的东西, 怎么都跑到桌面上了…我还试了一下打开文件管理器看看能不能把它们移动回去, 好蠢:)…好吧, 既然知道出了什么问题了, 那就对症下药好了.</p>
+<p><img src="/images/L.jpg" alt="That picture at the desktop" title="Named L"></p>
+<h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><h3 id="Google一波"><a href="#Google一波" class="headerlink" title="Google一波"></a><a href="http://www.google.com" target="_blank" rel="external">Google</a>一波</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">linux下home目录下的东西都跑到桌面上了</div></pre></td></tr></table></figure>
+<p>目前坚信的一件事就是你现在遇到的很多问题都是别人已经遇到过并且解决了的, 所以有什么不懂的就要多谷歌, 有时候提出问题比解决问题更有价值.</p>
+<h3 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim /home/yourname(用户名)/.config/usr-dirs.dir</div></pre></td></tr></table></figure>
+<p>原来这个东西是可以自己设定的, 而 ~/.config这个配置文件目录下的usr-dirs.dir就是设置文件内容的, vi一下就能看到具体的注释内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># This file is written by xdg-user-dirs-update</div><div class="line"># If you want to change or add directories, just edit the line you&apos;re</div><div class="line"># interested in. All local changes will be retained on the next run</div><div class="line"># Format is XDG_xxx_DIR=&quot;$HOME/yyy&quot;, where yyy is a shell-escaped</div><div class="line"># homedir-relative path, or XDG_xxx_DIR=&quot;/yyy&quot;, where /yyy is an</div><div class="line"># absolute path. No other format is supported.</div></pre></td></tr></table></figure>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">XDG_DESKTOP-DIR=<span class="string">"<span class="variable">$HOME</span>/desktop"</span></div></pre></td></tr></table></figure>
+<p>注意desktop是自己设置的桌面名称,你可能是大写的<br>同理也可以将此配置文件中的其他文件夹诸如<code>下载</code>(<code>Downloads</code>)也设置一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">XDG_DOWNLOAD_DIR=&quot;$HOME/Downloads&quot;</div><div class="line">XDG_TEMPLATES_DIR=&quot;$HOME/Templates&quot;</div><div class="line">XDG_PUBLICSHARE_DIR=&quot;$HOME/Common&quot;</div><div class="line">XDG_DOCUMENTS_DIR=&quot;$HOME/Documents&quot;</div><div class="line">XDG_MUSIC_DIR操作系统=&quot;$HOME/Music&quot;</div><div class="line">XDG_PICTURES_DIR=&quot;$HOME/Pictures&quot;</div><div class="line">XDG_VIDEOS_DIR=&quot;$HOME/Videos&quot;</div><div class="line">XDG_DESKTOP_DIR=&quot;$HOME/desktop&quot;</div></pre></td></tr></table></figure>
+<p>保存设置之后再重启操作系统, 问题解决 :)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ reboot</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总是要在每次遇到问题之后多总结以避免再次出现问题的对不对.</p>
+<ul>
+<li>系统的一些界面设置问题可能可以在 ~/.config目录下找到对应配置文件以解决</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用的是下基于Ubuntu的Linux Mint 18(Sarah)x64系统, 因为一开始的时候对于Linux的使用不大熟练, 安装完之后选择了中文语言, 也因为上手简单, 很多东西都是定制好的,&lt;br&gt;比如安装完成Home目录下就已经为你创建了包括&lt;code&gt;音乐&lt;/c
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://runlove.ml/2017/08/29/hello-world/"/>
+    <id>http://runlove.ml/2017/08/29/hello-world/</id>
+    <published>2017-08-29T07:22:47.644Z</published>
+    <updated>2017-08-29T07:22:47.644Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
