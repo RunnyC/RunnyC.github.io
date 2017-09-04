@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://runlove.ml/"/>
-  <updated>2017-09-04T06:55:59.889Z</updated>
+  <updated>2017-09-04T06:57:19.517Z</updated>
   <id>http://runlove.ml/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>解决ubuntu使用的一个小问题</title>
     <link href="http://runlove.ml/2017/09/04/Linux-0/"/>
     <id>http://runlove.ml/2017/09/04/Linux-0/</id>
-    <published>2017-09-04T06:55:59.953Z</published>
-    <updated>2017-09-04T06:55:59.889Z</updated>
+    <published>2017-09-04T06:57:19.541Z</published>
+    <updated>2017-09-04T06:57:19.517Z</updated>
     
     <content type="html"><![CDATA[<p>使用的是基于Ubuntu的Linux Mint 18(Sarah)x64系统, 因为一开始的时候对于Linux的使用不大熟练, 安装完之后选择了中文语言, 也因为上手简单, 很多东西都是定制好的,<br>比如安装完成Home目录下就已经为你创建了包括<code>音乐</code>, <code>下载</code>, <code>模板</code>, <code>桌面</code>等空目录, 问题就在这里, 因为不喜欢中文文件名, 所以就手动把<code>桌面</code>这个文件名改成了英文<code>desktop</code>,<br>本来没什么事情的, 继续折腾东西, 等我下次重启之后, 发现桌面上多了很多东西(因为我是不喜欢放很多东西在桌面的, 这一点相信有很多人跟我一样, 简洁即美)，那么只放了一张图片在桌面上的我的系统桌面怎么突然多了那么多东西呢? 定睛一看, 原来都是我Home目录下的东西, 怎么都跑到桌面上了…我还试了一下打开文件管理器看看能不能把它们移动回去, 好蠢:)…好吧, 既然知道出了什么问题了, 那就对症下药好了.</p>
 <p><img src="/images/L.jpg" alt="That picture at the desktop" title="Named L"></p>
