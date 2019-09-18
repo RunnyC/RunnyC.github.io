@@ -9,7 +9,7 @@
     <meta name="description" content="Run&apos;s Love here">
 <meta property="og:type" content="website">
 <meta property="og:title" content="RunLove">
-<meta property="og:url" content="http://runlove.ml/archives/2018/01/index.html">
+<meta property="og:url" content="http://runlove.ml/index.html">
 <meta property="og:site_name" content="RunLove">
 <meta property="og:description" content="Run&apos;s Love here">
 <meta name="twitter:card" content="summary">
@@ -76,17 +76,52 @@
 </header>
 
         
-        <div id="archive">
+        <section id="about">
+  
+    <p>Run’s Love here</p>
+
+  
+  <p style="display: inline">
+    
+      Find me on
+      <ul id="sociallinks">
+        
+          <li><a class="icon" target="_blank" href="https://github.com/runnyc" title="github"><i class="fa fa-github"></i></a></li>
+        
+          <li><a class="icon" target="_blank" href="https://t.me/RunLove2017" title="telegram"><i class="fa fa-telegram"></i></a></li>
+        
+          <li><a class="icon" target="_blank" href="mailto:runlove2017@outlook.com" title="envelope"><i class="fa fa-envelope"></i></a></li>
+        
+          <li><a class="icon" target="_blank" href="/atom.xml" title="rss"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>.
+    
+  </p>
+</section>
+
+<section id="writing">
+  <span class="h1"><a href="/archives">Writing</a></span>
   <ul class="post-list">
     
+      
     
     
-      
-      
-      
-      
-        <h2>2018</h2>
-      
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-03-07T03:32:51.390Z" itemprop="datePublished">2018-03-07</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2018/03/07/hello-world/">Hello World</a>
+    
+
+
+</span>
+      </li>
+    
       <li class="post-item">
         
     <div class="meta">
@@ -100,32 +135,43 @@
     
 
 
-<span>
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-09-04T06:57:19.541Z" itemprop="datePublished">2017-09-04</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2017/09/04/Linux-0/">解决ubuntu使用的一个小问题</a>
+    
+
+
+</span>
       </li>
     
   </ul>
   
+</section>
 
-</div>
+
 
     </div>
     
     <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2019 Run Love
+    Copyright &copy; <%= new Date().getFullYear() %> <%= config.author || config.title %>
   </div>
   <div class="footer-right">
     <nav>
       <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a href="https://github.com/RunnyC/cactus-dark">Projects</a></li>
-        
+        <% for (var i in theme.nav) { %> 
+          <li><a href="<%- url_for(theme.nav[i]) %>"><%= i %></a></li>
+        <% } %>
       </ul>
     </nav>
   </div>
@@ -133,23 +179,9 @@
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
- <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
 
 </footer>
 
