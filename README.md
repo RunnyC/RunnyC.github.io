@@ -1,2 +1,2 @@
-# https://www.runny.ml
+# Runny's Blog
 A blog for Runny making his love.
